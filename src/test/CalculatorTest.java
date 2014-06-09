@@ -18,6 +18,8 @@ public class CalculatorTest {
 
 	@Test
 	public void shouldSubtractTenByFourIsSix() throws Exception {
+		final Calculator calculator = new Calculator();
 
+		assertThat(calculator.subtract(10, 4), is(equalTo(6)));
 	}
 }
