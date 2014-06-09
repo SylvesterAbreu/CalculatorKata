@@ -15,4 +15,9 @@ public class CalculatorTest {
 
 		assertThat(calculator.sum(3, 5), is(equalTo(8)));
 	}
+
+	@Test
+	public void shouldSubtractTenByFourIsSix() throws Exception {
+
+	}
 }
