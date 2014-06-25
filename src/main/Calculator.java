@@ -9,4 +9,8 @@ public class Calculator {
 	public Integer subtract(int value, int anotherValue) {
 		return value - anotherValue;
 	}
+
+	public Integer divide(int value, int anotherValue) {
+		return value / anotherValue;
+	}
 }

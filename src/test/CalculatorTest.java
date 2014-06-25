@@ -21,5 +21,13 @@ public class CalculatorTest {
 		final Calculator calculator = new Calculator();
 
 		assertThat(calculator.subtract(10, 4), is(equalTo(6)));
+
+	}
+
+	@Test
+	public void shouldDivideTenByTwoEqualsFive() throws Exception {
+		final Calculator calculator = new Calculator();
+
+		assertThat(calculator.divide(10, 2), is(equalTo(5)));
 	}
 }
