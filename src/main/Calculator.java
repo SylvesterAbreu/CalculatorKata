@@ -17,8 +17,14 @@ public class Calculator {
 	}
 
 	public String add(String values) {
-		if (StringUtils.isBlank(values))
+		if (StringUtils.isBlank(values)){
 			return "0";
+		}
+		final String[] valuesForSum = StringUtils.split(values, ',');
+		if (valuesForSum.length == 1) {
+			final String stringValue = valuesForSum[0];
+			return stringValue;
+		}
 		return null;
 	}
 }

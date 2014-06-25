@@ -18,6 +18,14 @@ public class CalculatorTest {
 	}
 
 	@Test
+	public void returns_same_number_when_only_one_is_passed(){
+		Calculator calculator = new Calculator();
+		String value = calculator.add("8");
+
+		assertThat(value, is(equalTo("8")));
+	}
+
+	@Test
 	public void shouldSumThreePlusFiveEqualsEight() throws Exception {
 		final Calculator calculator = new Calculator();
 
