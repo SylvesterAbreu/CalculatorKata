@@ -2,6 +2,9 @@ package main;
 
 import clover.org.apache.commons.lang.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Calculator {
 
 	public Integer sum(int value, int anotherValue) {
@@ -29,6 +32,20 @@ public class Calculator {
 			final String stringValue = valuesForSum[0];
 			return stringValue;
 		}
-		return null;
+
+		List<SingleValue> singleValueList = new ArrayList<>();
+		for (String stringValue: valuesForSum){
+			int integerValue = Integer.parseInt(stringValue);
+			final SingleValue singleValue = new SingleValue(integerValue);
+			singleValueList.add(singleValue);
+		}
+
+		int sum = 0;
+		for(SingleValue singleValue: singleValueList){
+			sum += singleValue.fetch();
+		}
+
+
+		return sum + "";
 	}
 }

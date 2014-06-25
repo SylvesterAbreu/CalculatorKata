@@ -18,11 +18,19 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void returns_same_number_when_only_one_is_passed(){
+	public void returns_same_number_when_only_one_is_added(){
 		Calculator calculator = new Calculator();
 		String value = calculator.add("8");
 
 		assertThat(value, is(equalTo("8")));
+	}
+
+	@Test
+	public void returns_sum_of_multiple_numbers_added() {
+		Calculator calculator = new Calculator();
+		String value = calculator.add("12,9");
+
+		assertThat(value, is(equalTo("21")));
 	}
 
 	@Test
