@@ -20,6 +20,10 @@ public class Calculator {
 		if (StringUtils.isBlank(values)){
 			return "0";
 		}
+		return getSum(values);
+	}
+
+	private String getSum(String values) {
 		final String[] valuesForSum = StringUtils.split(values, ',');
 		if (valuesForSum.length == 1) {
 			final String stringValue = valuesForSum[0];
