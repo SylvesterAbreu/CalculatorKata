@@ -10,6 +10,14 @@ import static org.junit.Assert.assertThat;
 public class CalculatorTest {
 
 	@Test
+	public void returns_sum_zero_when_empty_string_is_added(){
+		Calculator calculator = new Calculator();
+		String value = calculator.add("");
+
+		assertThat(value, is(equalTo("0")));
+	}
+
+	@Test
 	public void shouldSumThreePlusFiveEqualsEight() throws Exception {
 		final Calculator calculator = new Calculator();
 
