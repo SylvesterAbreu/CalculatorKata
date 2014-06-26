@@ -19,33 +19,48 @@ public class Calculator {
 		return value / anotherValue;
 	}
 
-	public String add(String values) {
+	public Sum add(String values) {
 		if (StringUtils.isBlank(values)){
-			return "0";
+			return new Sum(0);
 		}
 		return getSum(values);
 	}
 
-	private String getSum(String values) {
+	private Sum getSum(String values) {
 		final String[] valuesForSum = StringUtils.split(values, ',');
 		if (valuesForSum.length == 1) {
-			final String stringValue = valuesForSum[0];
-			return stringValue;
+			return getSumOfSingleValue(valuesForSum[0]);
 		}
+		return getSumOfMultipleValues(valuesForSum);
+	}
 
+	private Sum getSumOfSingleValue(String s) {
+		final int integerValue = Integer.parseInt(s);
+		return new Sum(integerValue);
+	}
+
+	private Sum getSumOfMultipleValues(String[] valuesForSum) {
+		List<SingleValue> singleValueList = getListOfSingleValues(valuesForSum);
+
+		return sumAllValues(singleValueList);
+	}
+
+	private List<SingleValue> getListOfSingleValues(String[] valuesForSum) {
 		List<SingleValue> singleValueList = new ArrayList<>();
 		for (String stringValue: valuesForSum){
 			int integerValue = Integer.parseInt(stringValue);
 			final SingleValue singleValue = new SingleValue(integerValue);
 			singleValueList.add(singleValue);
 		}
+		return singleValueList;
+	}
 
+	private Sum sumAllValues(List<SingleValue> singleValueList) {
 		int sum = 0;
 		for(SingleValue singleValue: singleValueList){
 			sum += singleValue.fetch();
 		}
 
-
-		return sum + "";
+		return new Sum(sum);
 	}
 }

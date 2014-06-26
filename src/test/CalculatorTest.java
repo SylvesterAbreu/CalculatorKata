@@ -1,6 +1,7 @@
 package test;
 
 import main.Calculator;
+import main.Sum;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -12,25 +13,25 @@ public class CalculatorTest {
 	@Test
 	public void returns_sum_zero_when_empty_string_is_added(){
 		Calculator calculator = new Calculator();
-		String value = calculator.add("");
+		Sum value = calculator.add("");
 
-		assertThat(value, is(equalTo("0")));
+		assertThat(value.fetch(), is(equalTo(0)));
 	}
 
 	@Test
 	public void returns_same_number_when_only_one_is_added(){
 		Calculator calculator = new Calculator();
-		String value = calculator.add("8");
+		Sum value = calculator.add("8");
 
-		assertThat(value, is(equalTo("8")));
+		assertThat(value.fetch(), is(equalTo(8)));
 	}
 
 	@Test
 	public void returns_sum_of_multiple_numbers_added() {
 		Calculator calculator = new Calculator();
-		String value = calculator.add("12,9");
+		Sum value = calculator.add("12,9");
 
-		assertThat(value, is(equalTo("21")));
+		assertThat(value.fetch(), is(equalTo(21)));
 	}
 
 	@Test
