@@ -23,23 +23,24 @@ public class Calculator {
 		if (StringUtils.isBlank(values)){
 			return new Sum(0);
 		}
-		return getSum(values);
+		return sum(values);
 	}
 
-	private Sum getSum(String values) {
+	private Sum sum(String values) {
 		final String[] valuesForSum = StringUtils.split(values, ',');
 		if (valuesForSum.length == 1) {
-			return getSumOfSingleValue(valuesForSum[0]);
+			return sumOfSingleValue(valuesForSum[0]);
 		}
-		return getSumOfMultipleValues(valuesForSum);
+		return sumOfMultipleValues(valuesForSum);
 	}
 
-	private Sum getSumOfSingleValue(String s) {
-		final int integerValue = Integer.parseInt(s);
+	private Sum sumOfSingleValue(String stringValue) {
+		final int integerValue = Integer.parseInt(stringValue);
+
 		return new Sum(integerValue);
 	}
 
-	private Sum getSumOfMultipleValues(String[] valuesForSum) {
+	private Sum sumOfMultipleValues(String[] valuesForSum) {
 		List<SingleValue> singleValueList = getListOfSingleValues(valuesForSum);
 
 		return sumAllValues(singleValueList);
@@ -47,12 +48,17 @@ public class Calculator {
 
 	private List<SingleValue> getListOfSingleValues(String[] valuesForSum) {
 		List<SingleValue> singleValueList = new ArrayList<>();
+
 		for (String stringValue: valuesForSum){
-			int integerValue = Integer.parseInt(stringValue);
-			final SingleValue singleValue = new SingleValue(integerValue);
+			final SingleValue singleValue = getSingleValue(stringValue);
 			singleValueList.add(singleValue);
 		}
 		return singleValueList;
+	}
+
+	private SingleValue getSingleValue(String stringValue) {
+		int integerValue = Integer.parseInt(stringValue);
+		return new SingleValue(integerValue);
 	}
 
 	private Sum sumAllValues(List<SingleValue> singleValueList) {
